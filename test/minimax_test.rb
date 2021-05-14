@@ -10,9 +10,9 @@ class MinimaxTest < Minitest::Test
     player = 10
     board = ['X', 'O', 'X', 3, 'O', 'O', 'O', 'X', 'X']
     minimax = Minimax.new(board, player)
-    # board_scores = get_box_scores(board)
-    board_scores = ['X', 'O', 'X', 0, 'O', 'O', 'O', 'X', 'X']
-    # assert_equal ['X', 'O', 'X', 0, 'O', 'O', 'O', 'X', 'X'], minimax.get_box_scores(board)
+    board_scores = minimax.get_box_scores(board)
+    # board_scores = ['X', 'O', 'X', 0, 'O', 'O', 'O', 'X', 'X']
+    assert_equal ['X', 'O', 'X', 0, 'O', 'O', 'O', 'X', 'X'], board_scores
     assert_equal 3, minimax.choose_best_box(board_scores)
   end
 
@@ -21,7 +21,9 @@ class MinimaxTest < Minitest::Test
     player = -10
     board = ['X', 'O', 'X', 3, 'O', 5, 'O', 'X', 'X']
     minimax = Minimax.new(board, player)
-    board_scores = ['X', 'O', 'X', 9, 'O', 0, 'O', 'X', 'X']
+    board_scores = minimax.get_box_scores(board)
+    # board_scores = ['X', 'O', 'X', 9, 'O', 0, 'O', 'X', 'X']
+    assert_equal ['X', 'O', 'X', 9, 'O', 0, 'O', 'X', 'X'], board_scores
     assert_equal 5, minimax.choose_best_box(board_scores)
   end
 
