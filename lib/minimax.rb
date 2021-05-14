@@ -32,7 +32,16 @@ class Minimax
 
   def get_box_scores(board)
     ['X', 'O', 'X', 0, 'O', 'O', 'O', 'X', 'X']
+    # if is_game_over?(board)
+    #
+    # else
+    #   score = -@player
+    #   box = 0
+    #   board_scores = []
+    #   while box < board.size
+    #
+    #   end
+    # end
   end
-
 end
 
