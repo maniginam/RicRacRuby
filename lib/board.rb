@@ -9,10 +9,8 @@ class Board
   end
 
   def is_game_over?
-    game_over = true
-    @board.reduce do |box|
-      game_over = false if box.is_a?(Integer)
-    end
-    game_over
+    box = 0
+    box += 1 until board[box].is_a?(Integer) || box < board.size
+    board[box].is_a?(String)
   end
 end
