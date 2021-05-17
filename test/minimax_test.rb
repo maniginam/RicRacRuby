@@ -22,7 +22,6 @@ class MinimaxTest < Minitest::Test
     player = -10
     minimax = Minimax.new(board, player)
     board_scores = minimax.score_boxes
-    # board_scores = ['X', 'O', 'X', 9, 'O', 0, 'O', 'X', 'X']
     box_3_score = minimax.score_box(Board.new(['X', 'O', 'X', 'O', 'O', 5, 'O', 'X', 'X']), player, 0)
     box_5_score = minimax.score_box(Board.new(['X', 'O', 'X', 3, 'O', 'O', 'O', 'X', 'X']), player, 0)
     assert_equal 9, box_3_score
@@ -36,7 +35,6 @@ class MinimaxTest < Minitest::Test
     board = ['X', 'O', 2, 3, 'O', 5, 'O', 'X', 'X']
     player = 10
     minimax = Minimax.new(board, player)
-    # board_scores = ['X', 'O', 0, -9, 'O', -9, 'O', 'X', 'X']
     board_scores = minimax.score_boxes
     box_2_score = minimax.score_box(Board.new(['X', 'O', 'X', 3, 'O', 5, 'O', 'X', 'X']), player, 0)
     box_3_score = minimax.score_box(Board.new(['X', 'O', 2, 'X', 'O', 5, 'O', 'X', 'X']), player, 0)
@@ -53,7 +51,6 @@ class MinimaxTest < Minitest::Test
     board = ['X', 'O', 2, 3, 'O', 5, 6, 'X', 'X']
     player = -10
     minimax = Minimax.new(board, player)
-    # board_scores = ['X', 'O', 0, 0, 'O', 0, -9, 'X', 'X']
     board_scores = minimax.score_boxes
     box_2_score = minimax.score_box(Board.new(['X', 'O', 'O', 3, 'O', 5, 6, 'X', 'X']), player, 0)
     box_3_score = minimax.score_box(Board.new(['X', 'O', 2, 'O', 'O', 5, 6, 'X', 'X']), player, 0)
@@ -93,6 +90,7 @@ class MinimaxTest < Minitest::Test
     player = -10
     minimax = Minimax.new(board, player)
     board_scores = minimax.score_boxes
+    expected_board_scores = ['X', 0, 7, 0, 'O', 0, 7, 0, 'X']
     box_1_score = minimax.score_box(Board.new(['X', 'O', 2, 3, 'O', 5, 6, 7, 'X']), player, 0)
     box_2_score = minimax.score_box(Board.new(['X', 1, 'O', 3, 'O', 5, 6, 7, 'X']), player, 0)
     box_3_score = minimax.score_box(Board.new(['X', 1, 2, 'O', 'O', 5, 6, 7, 'X']), player, 0)
@@ -105,7 +103,7 @@ class MinimaxTest < Minitest::Test
     assert_equal 0, box_5_score
     assert_equal 7, box_6_score
     assert_equal 0, box_7_score
-    assert_equal ['X', 0, 7, 0, 'O', 0, 7, 0, 'X'], board_scores
+    assert_equal expected_board_scores, board_scores
   end
 
   def test_seven_boxes_left
@@ -155,6 +153,5 @@ class MinimaxTest < Minitest::Test
     assert_equal 5, box_8_score
     assert_equal ['X', 5, 5, 5, 0, 5, 5, 5, 5], board_scores
   end
-
 
 end
