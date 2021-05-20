@@ -16,7 +16,10 @@ class GameMaster
 
   def run_game
     until board.game_over?
+      puts "playing turn"
       @player.play_turn(@board)
+      puts "turn played"
+      puts @board.board
       @player = next_player
     end
     @winner = get_winner

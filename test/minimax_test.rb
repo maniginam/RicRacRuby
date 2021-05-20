@@ -154,4 +154,22 @@ class MinimaxTest < Minitest::Test
     assert_equal ['X', 5, 5, 5, 0, 5, 5, 5, 5], board_scores
   end
 
+  def test_always_wins!
+    board = ['X', 'X', 2, 3, 4, 5, 6, 7, 8]
+    player = 10
+    minimax = Minimax.new(board, player)
+    board_scores = minimax.score_boxes
+    assert_equal ['X', 'X', 10, 10, 10, 10, 10, 10, 10], board_scores
+    assert_equal 2, minimax.choose_best_box(board_scores)
+  end
+
+  def test_too_good_to_lose!
+    board = ['X', 'X', 2, 3, 4, 5, 6, 7, 8]
+    player = -10
+    minimax = Minimax.new(board, player)
+    board_scores = minimax.score_boxes
+    assert_equal ['X', 'X', 7, 9, 9, 9, 9, 9, 9], board_scores
+    assert_equal 2, minimax.choose_best_box(board_scores)
+  end
+
 end

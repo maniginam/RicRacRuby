@@ -49,7 +49,7 @@ class Minimax
       calculate_score(board, player, depth)
     else
       score_each_box(board, depth, player)
-            end
+    end
 
   end
 
@@ -57,9 +57,14 @@ class Minimax
     player = @player
     @board.each do |box|
       if box.is_a?(Integer)
+        maybe_win = Board.new(@board)
         @board[box] = get_player_token(player)
-        box_score = score_box(Board.new(@board), player, 0)
-        @board[box] = box
+        if maybe_win.is_win?
+          box_score = 10
+        else
+          box_score = score_box(Board.new(@board), player, 0)
+          @board[box] = box
+        end
       else
         box_score = box
       end

@@ -50,7 +50,7 @@ class GameMasterTest < Minitest::Test
   def test_o_turn
     board = Board.new(['X', 'O', 'X', 3, 'O', 5, 'O', 'X', 'X'])
     player1 = MockPlayer.new(:mock, 'X', 10)
-    player2 = MockPlayer.new(:mock, 'O', 10)
+    player2 = MockPlayer.new(:mock, 'O', -10)
     game_master = GameMaster.new(board, [player1, player2])
     game_master.player = player2
     assert_nil game_master.winner
@@ -58,13 +58,14 @@ class GameMasterTest < Minitest::Test
     assert_equal 0, game_master.winner
   end
 
-  # def test_x_turn
-  #   board = Board.new(['X', 'O', 2, 3, 'O', 5, 'O', 'X', 'X'])
-  #   player1 = MockPlayer.new(:mock, 'X', 10)
-  #   player2 = MockPlayer.new(:mock, 'O', 10)
-  #   game_master = GameMaster.new(board, [player1, player2])
-  #   game_master.run_game
-  #   assert_nil game_master.winner
-  #   assert_equal(-10, game_master.player)
-  # end
+  def test_x_turn
+    board = Board.new(['X', 'O', 2, 3, 'O', 5, 'O', 'X', 'X'])
+    player1 = MockPlayer.new(:mock, 'X', 10)
+    player2 = MockPlayer.new(:mock, 'O', -10)
+    game_master = GameMaster.new(board, [player1, player2])
+    game_master.player = player1
+    assert_nil game_master.winner
+    game_master.run_game
+    assert_equal 0, game_master.winner
+  end
 end
