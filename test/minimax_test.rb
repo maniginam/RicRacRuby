@@ -112,13 +112,13 @@ class MinimaxTest < Minitest::Test
     player = 10
     minimax = Minimax.new(board, player)
     board_scores = minimax.score_boxes
-    box_1_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_2_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_3_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_5_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_6_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_7_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
-    box_8_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 8]), player, 0)
+    box_1_score = minimax.score_box(Board.new(['X', 'X', 2, 3, 'O', 5, 6, 7, 8]), player, 0)
+    box_2_score = minimax.score_box(Board.new(['X', 1, 'X', 3, 'O', 5, 6, 7, 8]), player, 0)
+    box_3_score = minimax.score_box(Board.new(['X', 1, 2, 'X', 'O', 5, 6, 7, 8]), player, 0)
+    box_5_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 'X', 6, 7, 8]), player, 0)
+    box_6_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 'X', 7, 8]), player, 0)
+    box_7_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 'X', 8]), player, 0)
+    box_8_score = minimax.score_box(Board.new(['X', 1, 2, 3, 'O', 5, 6, 7, 'X']), player, 0)
     assert_equal 0, box_1_score
     assert_equal 0, box_2_score
     assert_equal 0, box_3_score
@@ -164,11 +164,11 @@ class MinimaxTest < Minitest::Test
   end
 
   def test_too_good_to_lose!
-    board = ['X', 'X', 2, 3, 4, 5, 6, 7, 8]
-    player = -10
+    board = ['O', 'O', 2, 3, 4, 5, 6, 7, 8]
+    player = 10
     minimax = Minimax.new(board, player)
     board_scores = minimax.score_boxes
-    assert_equal ['X', 'X', 7, 9, 9, 9, 9, 9, 9], board_scores
+    assert_equal ['O', 'O', -7, -9, -9, -9, -9, -9, -9], board_scores
     assert_equal 2, minimax.choose_best_box(board_scores)
   end
 
