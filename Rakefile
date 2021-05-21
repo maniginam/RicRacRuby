@@ -17,6 +17,6 @@ end
 
 task :test do
   ruby 'test/minimax_test.rb'
-  # ruby 'test/board_test.rb'
+  ruby 'test/board_test.rb'
   ruby 'test/game_master_test.rb'
 end

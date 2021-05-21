@@ -10,16 +10,13 @@ class GameMaster
   def initialize(board, players)
     @board = board
     @players = players
-    @player = players[0]
+    @player = @players[0]
     @winner = nil
   end
 
   def run_game
     until board.game_over?
-      puts "playing turn"
       @player.play_turn(@board)
-      puts "turn played"
-      puts @board.board
       @player = next_player
     end
     @winner = get_winner
@@ -28,7 +25,7 @@ class GameMaster
   private
 
   def get_winner
-    if board.is_win?
+    if @board.is_win?
       @player
     else
       0
