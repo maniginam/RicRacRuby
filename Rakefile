@@ -12,11 +12,13 @@ task :default => :test
 # end
 
 task :run do
-  ruby 'lib/minimax.rb'
+  ruby 'lib/main.rb'
 end
 
 task :test do
   ruby 'test/minimax_test.rb'
   ruby 'test/board_test.rb'
   ruby 'test/game_master_test.rb'
+  ruby 'test/ai_player_test.rb'
+  ruby 'test/terminal_gui_test.rb'
 end

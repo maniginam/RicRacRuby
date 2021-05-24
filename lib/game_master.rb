@@ -5,19 +5,19 @@ require_relative 'player'
 
 # GameMaster
 class GameMaster
-  attr_accessor :board, :players, :player, :winner
+  attr_accessor :board, :player1, :player2, :player, :winner
 
   def initialize(board, players)
     @board = board
-    @players = players
-    @player = @players[0]
+    @player1 = players[0]
+    @player2 = players[1]
+    @player = @player1
     @winner = nil
   end
 
-  def run_game
+  def allow_turn
     until board.game_over?
-      @player.play_turn(@board)
-      @player = next_player
+      @player.play_turn(@board, next_player)
     end
     @winner = get_winner
   end
@@ -33,10 +33,10 @@ class GameMaster
   end
 
   def next_player
-    @player = if @player == @players[0]
-                @players[1]
+    @player = if @player == @player1
+                @player2
               else
-                @players[0]
+                @player1
               end
   end
 end
