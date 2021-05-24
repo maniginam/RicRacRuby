@@ -21,4 +21,5 @@ task :test do
   ruby 'test/game_master_test.rb'
   ruby 'test/ai_player_test.rb'
   ruby 'test/terminal_gui_test.rb'
+  ruby 'test/setup_test.rb'
 end

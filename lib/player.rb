@@ -2,10 +2,9 @@
 
 # Player
 class Player
-  attr_accessor :kind, :token, :score, :box
+  attr_accessor :token, :score, :box
 
-  def initialize(kind, token, score)
-    @kind = kind
+  def initialize(token, score)
     @token = token
     @score = score
   end

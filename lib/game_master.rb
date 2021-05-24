@@ -5,9 +5,10 @@ require_relative 'player'
 
 # GameMaster
 class GameMaster
-  attr_accessor :board, :player1, :player2, :player, :winner
+  attr_accessor :gui, :board, :player1, :player2, :player, :winner
 
-  def initialize(board, players)
+  def initialize(gui, board, players)
+    @gui = gui
     @board = board
     @player1 = players[0]
     @player2 = players[1]
@@ -15,8 +16,9 @@ class GameMaster
     @winner = nil
   end
 
-  def allow_turn
+  def run_game
     until board.game_over?
+      @gui.draw_board(@board.board)
       @player.play_turn(@board, next_player)
     end
     @winner = get_winner
