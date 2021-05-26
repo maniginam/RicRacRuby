@@ -42,11 +42,13 @@ class TerminalTest < Minitest::Test
   def test_player_selection
     tokens = %w[CHASE RUBBLE]
     terminal = Terminal.new
-    terminal.stub :set_human, '0' do
-      out = capture_io do
-        terminal.prompt_player_selection(tokens)
+    terminal.stub :gets, 'CHASE' do
+      terminal.stub :set_human, nil do
+        out = capture_io do
+          terminal.prompt_player_selection(tokens)
+        end
+        assert_equal "Do you want to be CHASE or RUBBLE?\n", out[0]
       end
-      assert_equal "Do you want to be CHASE or RUBBLE?\n", out[0]
     end
 
     out = capture_io do
