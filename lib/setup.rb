@@ -5,7 +5,7 @@ require_relative 'human_player'
 
 # Game Setup
 class Setup
-  attr_accessor :gui, :tokens, :num_of_humans, :human, :player1, :player2
+  attr_accessor :gui, :tokens, :num_of_humans, :human, :player1, :player2, :board
 
   def initialize(gui, tokens)
     @gui = gui
@@ -36,7 +36,9 @@ class Setup
     end
   end
 
-  # def set_board
-  #   board
-  # end
+  def setup_game
+    set_num_of_humans
+    set_players
+    @board = Board.new([0, 1, 2, 3, 4, 5, 6, 7, 8])
+  end
 end

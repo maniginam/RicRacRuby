@@ -7,7 +7,7 @@ require_relative '../lib/gui'
 class MockPlayer < Player
   attr_accessor :gui, :token, :score, :box, :test_box
 
-  def play_turn(board, opponent)
+  def play_turn(board, opponent, gui)
     if @test_box.nil?
       minimax = Minimax.new(board.board, [self, opponent])
       @box = minimax.choose_best_box(self)
@@ -19,7 +19,7 @@ class MockPlayer < Player
 end
 
 class MockGui < Gui
-  attr_accessor :num_of_humans, :human
+  attr_accessor :num_of_humans, :human, :board
 
   def welcome
     nil
@@ -34,6 +34,18 @@ class MockGui < Gui
   end
 
   def draw_board(_)
+    nil
+  end
+
+  def show_turn(_, _)
+    nil
+  end
+
+  def prompt_box_selection
+    @box
+  end
+
+  def show_winner(_)
     nil
   end
 end

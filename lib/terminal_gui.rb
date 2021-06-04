@@ -47,13 +47,28 @@ class Terminal < Gui
   def prompt_player_selection(tokens)
     puts String("Do you want to be #{tokens[0]} or #{tokens[1]}?")
     set_human(tokens, gets.chomp)
-
   end
 
   def draw_board(board)
-    puts "hello"
+    String("#{board[0]} | #{board[1]} | #{board[2]}  \n ----------- \n  #{board[3]} | #{board[4]} | #{board[5]} \n ----------- \n  #{board[6]} | #{board[7]} | #{board[8]} \n")
   end
 
+  def prompt_box_selection
+    puts 'Select a box'
+    gets.chomp.to_i
+  end
+
+  def show_turn(player, board)
+    puts draw_board(board)
+    puts String("#{player.token}'s Turn!")
+  end
+
+  def show_winner(board, player)
+    if player.nil?
+      puts "\nCat's Game"
+    else
+      puts "\n#{player.token} Wins!"
+    end
+    puts draw_board(board)
+  end
 end
-
-

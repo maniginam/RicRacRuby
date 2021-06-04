@@ -19,4 +19,12 @@ class Gui
   def draw_board
     raise NotImplementedError, 'You must implement the draw_board method'
   end
+
+  def show_turn
+    raise NotImplementedError, 'You must implement the show_turn method'
+  end
+
+  def show_winner
+    raise NotImplementedError, 'You must implement the show_winner method'
+  end
 end

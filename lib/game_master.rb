@@ -17,11 +17,12 @@ class GameMaster
   end
 
   def run_game
+    @gui.draw_board(@board.board)
     until board.game_over?
-      @gui.draw_board(@board.board)
-      @player.play_turn(@board, next_player)
+      @player.play_turn(@board, next_player, @gui)
     end
     @winner = get_winner
+    @gui.show_winner(@winner)
   end
 
   private
@@ -29,8 +30,6 @@ class GameMaster
   def get_winner
     if @board.is_win?
       @player
-    else
-      0
     end
   end
 

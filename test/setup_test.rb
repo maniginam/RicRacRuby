@@ -37,7 +37,6 @@ class SetupTest < Minitest::Test
     @setup.set_players
     assert_equal true, @setup.player1.is_a?(HumanPlayer)
     assert_equal true, @setup.player2.is_a?(HumanPlayer)
-
     @setup.num_of_humans = 1
     @gui.human = 1
     @setup.set_players
@@ -51,8 +50,5 @@ class SetupTest < Minitest::Test
     assert_equal true, @setup.player2.is_a?(HumanPlayer)
   end
 
-  def test_set_board
-
-  end
 end
 

@@ -1,10 +1,13 @@
 #!/usr/local/opt/ruby/bin ruby
+# frozen_string_literal: true
+
 # -*- ruby -*-
 #
 require 'rake/clean'
 require 'rake/testtask'
+require_relative './lib/main'
 
-task :default => :test
+task default: :test
 
 # RuboCop::RakeTask.new(:lint) do |task|
 #   task.patterns = ['lib/**/*.rb', 'test/**/*.rb']
