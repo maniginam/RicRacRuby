@@ -75,12 +75,12 @@ class TerminalTest < Minitest::Test
 
   def test_draw_board_cat
     board = terminal.draw_board(%w[X O X X O O O X X])
-    assert_equal String("X | O | X  \n ----------- \n  X | O | O \n ----------- \n  O | X | X \n"), board
+    assert_equal String("  X | O | X  \n ----------- \n  X | O | O \n ----------- \n  O | X | X \n"), board
   end
 
   def test_draw_board_empty
     board = terminal.draw_board([0, 1, 2, 3, 4, 5, 6, 7, 8])
-    assert_equal String("0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \n"), board
+    assert_equal String("  0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \n"), board
   end
 
   def test_player_turn_ai
@@ -90,7 +90,7 @@ class TerminalTest < Minitest::Test
     out = capture_io do
       player.play_turn(board, opponent, terminal)
     end
-    assert_equal String("0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \nX's Turn!\n"),
+    assert_equal String("  0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \nX's Turn!\n"),
                  out[0]
   end
 
@@ -102,7 +102,7 @@ class TerminalTest < Minitest::Test
       out = capture_io do
         player.play_turn(board, opponent, terminal)
       end
-      assert_equal String("0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \nO's Turn!\nSelect a box\n"),
+      assert_equal String("  0 | 1 | 2  \n ----------- \n  3 | 4 | 5 \n ----------- \n  6 | 7 | 8 \nO's Turn!\nSelect a box\n"),
                    out[0]
     end
   end
@@ -110,7 +110,7 @@ class TerminalTest < Minitest::Test
   def test_show_winner_cat
     terminal.stub :draw_board, nil do
       out = capture_io do
-        terminal.show_winner('blah', nil)
+        terminal.show_win('blah', nil)
       end
       assert_equal String("\nCat's Game\n\n"), out[0]
     end
@@ -120,7 +120,7 @@ class TerminalTest < Minitest::Test
     player1 = HumanPlayer.new('X', 10)
     terminal.stub :draw_board, nil do
       out = capture_io do
-        terminal.show_winner('blah', player1)
+        terminal.show_win('blah', player1)
       end
       assert_equal String("\nX Wins!\n\n"), out[0]
     end
@@ -130,7 +130,7 @@ class TerminalTest < Minitest::Test
     player2 = AiPlayer.new('O', -10)
     terminal.stub :draw_board, nil do
       out = capture_io do
-        terminal.show_winner('blah', player2)
+        terminal.show_win('blah', player2)
       end
       assert_equal String("\nO Wins!\n\n"), out[0]
     end

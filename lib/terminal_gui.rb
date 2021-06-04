@@ -50,7 +50,7 @@ class Terminal < Gui
   end
 
   def draw_board(board)
-    String("#{board[0]} | #{board[1]} | #{board[2]}  \n ----------- \n  #{board[3]} | #{board[4]} | #{board[5]} \n ----------- \n  #{board[6]} | #{board[7]} | #{board[8]} \n")
+    String("  #{board[0]} | #{board[1]} | #{board[2]}  \n ----------- \n  #{board[3]} | #{board[4]} | #{board[5]} \n ----------- \n  #{board[6]} | #{board[7]} | #{board[8]} \n")
   end
 
   def prompt_box_selection
@@ -63,7 +63,7 @@ class Terminal < Gui
     puts String("#{player.token}'s Turn!")
   end
 
-  def show_winner(board, player)
+  def show_win(board, player)
     if player.nil?
       puts "\nCat's Game"
     else

@@ -21,3 +21,5 @@ def main
   game = GameMaster.new(gui, setup.board, [setup.player1, setup.player2])
   game.run_game
 end
+
+main

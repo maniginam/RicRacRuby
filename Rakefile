@@ -5,9 +5,8 @@
 #
 require 'rake/clean'
 require 'rake/testtask'
-require_relative './lib/main'
 
-task default: :test
+task default: :run
 
 # RuboCop::RakeTask.new(:lint) do |task|
 #   task.patterns = ['lib/**/*.rb', 'test/**/*.rb']

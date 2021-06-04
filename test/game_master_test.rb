@@ -23,7 +23,7 @@ class GameMasterTest < Minitest::Test
     @gui = MiniTest::Mock.new
     @game_master.run_game
     gui.expect(:draw_board, nil, [@board.board])
-    gui.expect(:show_winner, nil, [@board.board, nil])
+    gui.expect(:show_win, nil, [@board.board, nil])
     assert_nil @game_master.winner
   end
 
@@ -32,7 +32,7 @@ class GameMasterTest < Minitest::Test
     gui = MiniTest::Mock.new
     @game_master.run_game
     gui.expect(:draw_board, nil, [@board.board])
-    gui.expect(:show_winner, nil, [@board.board, @player1])
+    gui.expect(:show_win, nil, [@board.board, @player1])
     assert_equal @player1, @game_master.winner
   end
 
@@ -42,7 +42,7 @@ class GameMasterTest < Minitest::Test
     gui = MiniTest::Mock.new
     @game_master.run_game
     gui.expect(:draw_board, nil, [@board.board])
-    gui.expect(:show_winner, nil, [@board.board, @player2])
+    gui.expect(:show_win, nil, [@board.board, @player2])
     assert_equal @player2, @game_master.winner
   end
 
@@ -56,10 +56,13 @@ class GameMasterTest < Minitest::Test
   end
 
   def test_o_turn
-    init_game(['X', 'O', 'X', 3, 'O', 5, 'O', 'X', 'X'])
+    init_game(['X', 'O', 'X',
+                      3,  'O',  5,
+                     'O', 'X', 'X'])
     @game_master.player = @player2
     assert_nil @game_master.winner
     @game_master.run_game
+    print @board.board
     assert_nil @game_master.winner
   end
 

@@ -24,7 +24,7 @@ class Gui
     raise NotImplementedError, 'You must implement the show_turn method'
   end
 
-  def show_winner
-    raise NotImplementedError, 'You must implement the show_winner method'
+  def show_win
+    raise NotImplementedError, 'You must implement the show_win method'
   end
 end

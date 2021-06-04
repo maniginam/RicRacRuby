@@ -22,15 +22,13 @@ class GameMaster
       @player.play_turn(@board, next_player, @gui)
     end
     @winner = get_winner
-    @gui.show_winner(@winner)
+    @gui.show_win(@board.board, @winner)
   end
 
   private
 
   def get_winner
-    if @board.is_win?
-      @player
-    end
+    @player if @board.is_win?
   end
 
   def next_player

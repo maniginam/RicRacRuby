@@ -1,3 +1,3 @@
 watch( '.*\.rb' ) do
-  system 'rake'
+  system 'rake test'
 end

@@ -6,7 +6,7 @@ require_relative 'player'
 # minimax
 class Minimax
   attr_accessor :best_box, :board_scores, :temp_board
-  attr_reader :board, :score, :player1, :player2
+  attr_reader :board, :score, :player1, :player2, :player
 
   def initialize(board, players)
     @board = board
@@ -17,10 +17,6 @@ class Minimax
 
   def is_best_box?(player, score, box_score)
     player.score == -10 && box_score < score || player.score == 10 && box_score > score
-  end
-
-  def is_best_opponent_box?(player, score, box_score)
-    player.score == -10 && box_score > score || player.score == 10 && box_score < score
   end
 
   def calculate_score(board, player, depth)

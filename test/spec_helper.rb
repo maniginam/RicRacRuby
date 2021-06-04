@@ -45,7 +45,7 @@ class MockGui < Gui
     @box
   end
 
-  def show_winner(_)
+  def show_win(_, _)
     nil
   end
 end
