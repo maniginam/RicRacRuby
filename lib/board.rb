@@ -21,6 +21,10 @@ class Board
     @board.uniq.count == 2
   end
 
+  def box_available(box)
+    @board[box] == box
+  end
+
   def game_over?
     is_win? || board_full?
   end

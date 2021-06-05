@@ -17,7 +17,6 @@ class GameMasterTest < Minitest::Test
     @game_master = GameMaster.new(gui, @board, [@player1, @player2])
   end
 
-  # Game is over: cat's game
   def test_game_over_cats_game
     init_game(%w[X O X X O O O X X])
     @gui = MiniTest::Mock.new
@@ -49,20 +48,16 @@ class GameMasterTest < Minitest::Test
   def test_one_box_left_x_turn
     init_game(['X', 'O', 'X', 3, 'O', 'O', 'O', 'X', 'X'])
     assert_nil @game_master.winner
-    player1.play_turn(@game_master.board, @player2, @gui)
     @game_master.run_game
     assert_equal %w[X O X X O O O X X], @game_master.board.board
     assert_nil @game_master.winner
   end
 
   def test_o_turn
-    init_game(['X', 'O', 'X',
-                      3,  'O',  5,
-                     'O', 'X', 'X'])
+    init_game(['X', 'O', 'X', 3, 'O', 5, 'O', 'X', 'X'])
     @game_master.player = @player2
     assert_nil @game_master.winner
     @game_master.run_game
-    print @board.board
     assert_nil @game_master.winner
   end
 
@@ -72,4 +67,12 @@ class GameMasterTest < Minitest::Test
     @game_master.run_game
     assert_nil @game_master.winner
   end
+
+  def test_play_again_yes
+    init_game(['blah'])
+    gui.stub :prompt_play_again, 'Y' do
+      assert @game_master.play_again
+    end
+  end
 end
+

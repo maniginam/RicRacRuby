@@ -3,14 +3,14 @@
 require_relative '../lib/minimax'
 require_relative '../lib/gui'
 
-
 class MockPlayer < Player
   attr_accessor :gui, :token, :score, :box, :test_box
 
   def play_turn(board, opponent, gui)
     if @test_box.nil?
-      minimax = Minimax.new(board.board, [self, opponent])
-      @box = minimax.choose_best_box(self)
+      self_map = { token: self.token, score: self.score }
+      minimax = Minimax.new(board.board, [self_map, { token: opponent.token, score: opponent.score }])
+      @box = minimax.choose_best_box(self_map)
     else
       @box = @test_box
     end
@@ -19,7 +19,7 @@ class MockPlayer < Player
 end
 
 class MockGui < Gui
-  attr_accessor :num_of_humans, :human, :board
+  attr_accessor :num_of_humans, :human, :board, :box
 
   def welcome
     nil
@@ -43,6 +43,10 @@ class MockGui < Gui
 
   def prompt_box_selection
     @box
+  end
+
+  def prompt_box_taken(box)
+    @box += 1
   end
 
   def show_win(_, _)

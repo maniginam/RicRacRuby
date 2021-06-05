@@ -24,7 +24,19 @@ class Gui
     raise NotImplementedError, 'You must implement the show_turn method'
   end
 
+  def prompt_box_selection
+    raise NotImplementedError, 'You must implement the prompt_box_selection method'
+  end
+
+  def prompt_box_taken
+    raise NotImplementedError, 'You must implement the prompt_box_taken method'
+  end
+
   def show_win
     raise NotImplementedError, 'You must implement the show_win method'
+  end
+
+  def prompt_play_again
+    raise NotImplementedError, 'You must implement the play_again method'
   end
 end

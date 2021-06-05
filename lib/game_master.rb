@@ -5,7 +5,7 @@ require_relative 'player'
 
 # GameMaster
 class GameMaster
-  attr_accessor :gui, :board, :player1, :player2, :player, :winner
+  attr_accessor :gui, :board, :player1, :player2, :player, :winner, :play_again
 
   def initialize(gui, board, players)
     @gui = gui
@@ -16,26 +16,34 @@ class GameMaster
     @winner = nil
   end
 
+  def play_again
+    if @gui.prompt_play_again == 'Y'
+      @play_again = true
+    end
+  end
+
   def run_game
     @gui.draw_board(@board.board)
     until board.game_over?
       @player.play_turn(@board, next_player, @gui)
+      @board.board[@player.box] = @player.token
+      @player = next_player unless board.game_over?
     end
-    @winner = get_winner
+    get_winner
     @gui.show_win(@board.board, @winner)
   end
 
   private
 
   def get_winner
-    @player if @board.is_win?
+    @winner = @player if @board.is_win?
   end
 
   def next_player
-    @player = if @player == @player1
-                @player2
-              else
-                @player1
-              end
+    if @player == @player1
+      @player2
+    else
+      @player1
+    end
   end
 end

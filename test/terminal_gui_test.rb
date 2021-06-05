@@ -45,12 +45,13 @@ class TerminalTest < Minitest::Test
 
   def test_player_selection
     tokens = %w[CHASE RUBBLE]
+    @terminal.num_of_humans = 1
     terminal.stub :gets, 'CHASE' do
       terminal.stub :set_human, nil do
         out = capture_io do
           terminal.prompt_player_selection(tokens)
         end
-        assert_equal "Do you want to be CHASE or RUBBLE?\n", out[0]
+        assert_equal "Do you want to be CHASE or RUBBLE?\nMay the odds be eva' in your favor!\n", out[0]
       end
     end
 
@@ -133,6 +134,35 @@ class TerminalTest < Minitest::Test
         terminal.show_win('blah', player2)
       end
       assert_equal String("\nO Wins!\n\n"), out[0]
+    end
+  end
+
+  def test_box_taken
+    @player2 = HumanPlayer.new('O', -10)
+    terminal.stub :prompt_box_selection, 3 do
+      out = capture_io do
+        terminal.prompt_box_taken(3)
+      end
+      assert_equal String("Box 3 is taken\n"), out[0]
+    end
+  end
+
+  def test_non_valid_box_selection
+    board = Board.new([0, 1, 2, 3, 'X', 5, 6, 7, 8])
+    assert_equal false, terminal.valid_box?('hello world')
+    assert_equal false, terminal.valid_box?('h')
+    assert_equal true, terminal.valid_box?('1')
+    assert_equal true, terminal.valid_box?('0')
+    assert_equal false, terminal.valid_box?('9')
+    assert_equal false, terminal.valid_box?('1000')
+  end
+
+  def test_play_again
+    terminal.stub :gets, "y", "y" do
+      out = capture_io do
+        terminal.prompt_play_again
+      end
+      assert_equal String("Do you want to play again?\n"), out[0]
     end
   end
 end

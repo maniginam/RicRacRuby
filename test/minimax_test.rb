@@ -8,12 +8,12 @@ require_relative 'spec_helper'
 
 # Test program minimax
 class MinimaxTest < Minitest::Test
-  attr_accessor :minimax, :board, :player1, :player2
+  attr_accessor :minimax, :board, :player1, :player2, :player1_obj, :player2_obj
 
   def init_game(board)
     @board = Board.new(board)
-    @player1 = MockPlayer.new('X', 10)
-    @player2 = MockPlayer.new('O', -10)
+    @player1 = { token: 'X', score: 10 }
+    @player2 = { token: 'O', score: -10 }
     @minimax = Minimax.new(@board.board, [@player1, @player2])
   end
 

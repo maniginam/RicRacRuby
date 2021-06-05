@@ -16,16 +16,16 @@ class Minimax
   end
 
   def is_best_box?(player, score, box_score)
-    player.score == -10 && box_score < score || player.score == 10 && box_score > score
+    player[:score] == -10 && box_score < score || player[:score] == 10 && box_score > score
   end
 
   def calculate_score(board, player, depth)
     if !board.is_win?
       0
-    elsif player.score == 10
-      player.score - depth
+    elsif player[:score] == 10
+      player[:score] - depth
     else
-      player.score + depth
+      player[:score] + depth
     end
   end
 
@@ -38,15 +38,15 @@ class Minimax
   end
 
   def score_boxes(board, player, depth)
-    score = -player.score
+    score = -player[:score]
     if board.game_over?
       score = calculate_score(board, player, depth)
     else
       (0...board.board.size).each do |box|
-        score = -player.score
+        score = -player[:score]
         if board.board[box].is_a?(Integer)
           temp_board = Board.new(board.board)
-          temp_board.board[box] = player.token
+          temp_board.board[box] = player[:token]
           box_score = score_box(temp_board, player, depth)
           if is_best_box?(player, score, box_score)
             score = box_score
@@ -62,7 +62,7 @@ class Minimax
 
   def choose_best_box(player)
     best_box = nil
-    current_score = -player.score
+    current_score = -player[:score]
     score_boxes(Board.new(@board), player, 0)
     (0...@board.size).each do |box|
       next unless @board_scores[box].is_a?(Integer)
@@ -78,7 +78,7 @@ class Minimax
   private
 
   def score_each_box(board, depth, player)
-    score = player.score
+    score = player[:score]
     player = if player == @player1
                @player2
              else
@@ -87,19 +87,11 @@ class Minimax
     board.board.each do |box|
       next unless box.is_a?(Integer)
 
-      board.board[box] = player.token
+      board.board[box] = player[:token]
       box_score = score_box(Board.new(board.board), player, depth + 1)
       score = box_score if is_best_box?(player, score, box_score)
       board.board[box] = box
     end
     score
-  end
-
-  def get_player_token(player)
-    if player == 10
-      'X'
-    else
-      'O'
-    end
   end
 end

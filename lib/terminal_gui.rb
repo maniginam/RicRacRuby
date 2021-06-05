@@ -31,7 +31,7 @@ class Terminal < Gui
 
   def set_human(tokens, token_selection)
     if valid_token?(tokens, token_selection.upcase)
-      @human = token_selection
+      @human = token_selection.upcase
       ai = if @human == tokens[0]
              tokens[1]
            else
@@ -47,15 +47,32 @@ class Terminal < Gui
   def prompt_player_selection(tokens)
     puts String("Do you want to be #{tokens[0]} or #{tokens[1]}?")
     set_human(tokens, gets.chomp)
+    puts player_count_response
+    @human
   end
 
   def draw_board(board)
     String("  #{board[0]} | #{board[1]} | #{board[2]}  \n ----------- \n  #{board[3]} | #{board[4]} | #{board[5]} \n ----------- \n  #{board[6]} | #{board[7]} | #{board[8]} \n")
   end
 
+  def prompt_box_taken(box)
+    puts String("Box #{box} is taken")
+    prompt_box_selection
+  end
+
+  def valid_box?(box)
+    box == '0' || (box.to_i > 0 && box.to_i < 9)
+  end
+
   def prompt_box_selection
     puts 'Select a box'
-    gets.chomp.to_i
+    box = gets.chomp
+    if valid_box?(box)
+      box.to_i
+    else
+      puts 'Invalid Box'
+      prompt_box_selection
+    end
   end
 
   def show_turn(player, board)
@@ -70,5 +87,10 @@ class Terminal < Gui
       puts "\n#{player.token} Wins!"
     end
     puts draw_board(board)
+  end
+
+  def prompt_play_again
+    puts 'Do you want to play again?'
+    gets.chomp.upcase
   end
 end

@@ -26,12 +26,12 @@ class Setup
       @player2 = HumanPlayer.new(tokens[1], -10)
     else
       human = @gui.prompt_player_selection(tokens)
-      if human == 1
+      if human == tokens[0]
         @player1 = HumanPlayer.new(tokens[0], 10)
         @player2 = AiPlayer.new(tokens[1], -10)
       else
-        @player1 = AiPlayer.new(tokens[1], -10)
-        @player2 = HumanPlayer.new(tokens[0], 10)
+        @player1 = AiPlayer.new(tokens[0], 10)
+        @player2 = HumanPlayer.new(tokens[1], -10)
       end
     end
   end
@@ -39,6 +39,7 @@ class Setup
   def setup_game
     set_num_of_humans
     set_players
+    @gui.player_count_response
     @board = Board.new([0, 1, 2, 3, 4, 5, 6, 7, 8])
   end
 end

@@ -34,5 +34,11 @@ class BoardTest < Minitest::Test
     assert_equal true, board.is_win?
     assert_equal true, board.game_over?
   end
+
+  def test_box_available
+    board = Board.new([0, 'X', 2, 3, 4, 5, 6, 7, 8])
+    assert board.box_available(0)
+    assert_equal false, board.box_available(1)
+  end
 end
 

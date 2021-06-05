@@ -38,13 +38,13 @@ class SetupTest < Minitest::Test
     assert_equal true, @setup.player1.is_a?(HumanPlayer)
     assert_equal true, @setup.player2.is_a?(HumanPlayer)
     @setup.num_of_humans = 1
-    @gui.human = 1
+    @gui.human = 'X'
     @setup.set_players
     assert_equal true, @setup.player1.is_a?(HumanPlayer)
     assert_equal true, @setup.player2.is_a?(AiPlayer)
 
     @setup.num_of_humans = 1
-    @gui.human = 2
+    @gui.human = 'O'
     @setup.set_players
     assert_equal true, @setup.player1.is_a?(AiPlayer)
     assert_equal true, @setup.player2.is_a?(HumanPlayer)
