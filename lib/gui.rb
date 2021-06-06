@@ -32,6 +32,10 @@ class Gui
     raise NotImplementedError, 'You must implement the prompt_box_taken method'
   end
 
+  def prompt_invalid_box
+    raise NotImplementedError, 'You must implement the prompt_invalid_box method'
+  end
+
   def show_win
     raise NotImplementedError, 'You must implement the show_win method'
   end

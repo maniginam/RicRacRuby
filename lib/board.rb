@@ -22,7 +22,9 @@ class Board
   end
 
   def box_available(box)
-    @board[box] == box
+    unless box.nil?
+      @board[box] == box
+    end
   end
 
   def game_over?

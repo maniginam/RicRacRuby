@@ -64,14 +64,17 @@ class Terminal < Gui
     box == '0' || (box.to_i > 0 && box.to_i < 9)
   end
 
+  def prompt_invalid_box
+    puts 'Invalid Box'
+  end
+
   def prompt_box_selection
     puts 'Select a box'
     box = gets.chomp
     if valid_box?(box)
       box.to_i
     else
-      puts 'Invalid Box'
-      prompt_box_selection
+      prompt_invalid_box
     end
   end
 
