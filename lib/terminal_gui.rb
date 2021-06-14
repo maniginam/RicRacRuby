@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'gui'
 
 class Terminal < Gui
@@ -19,8 +21,8 @@ class Terminal < Gui
       'May the best player win!'
     elsif @num_of_humans == 1
       "May the odds be eva' in your favor!"
-    else 
-      "Not an option."
+    else
+      'Not an option.'
     end
   end
 
@@ -46,7 +48,6 @@ class Terminal < Gui
   def prompt_player_selection(tokens)
     puts String("Do you want to be #{tokens[0]} or #{tokens[1]}?")
     set_human(tokens, gets.chomp)
-    puts player_count_response
     @human
   end
 
@@ -60,7 +61,7 @@ class Terminal < Gui
   end
 
   def valid_box?(box)
-    box == '0' || (box.to_i > 0 && box.to_i < 9)
+    box == '0' || (box.to_i.positive? && box.to_i < 9)
   end
 
   def prompt_invalid_box

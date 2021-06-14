@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'ai_player'
 require_relative 'human_player'
 
@@ -34,9 +36,9 @@ class Setup
   end
 
   def setup_game
-    set_num_of_humans
+    set_num_of_humans until !@num_of_humans.nil? && @num_of_humans.zero? || @num_of_humans == 1 || @num_of_humans == 2
     set_players
-    @gui.player_count_response
+    puts @gui.player_count_response
     @board = Board.new([0, 1, 2, 3, 4, 5, 6, 7, 8])
   end
 end

@@ -48,7 +48,7 @@ class TerminalTest < Minitest::Test
         out = capture_io do
           terminal.prompt_player_selection(tokens)
         end
-        assert_equal "Do you want to be CHASE or RUBBLE?\nMay the odds be eva' in your favor!\n", out[0]
+        assert_equal "Do you want to be CHASE or RUBBLE?\n", out[0]
       end
     end
 
