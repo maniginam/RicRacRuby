@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require_relative '../lib/board'
 require_relative 'player'
 
-# minimax
 class Minimax
   attr_accessor :best_box, :board_scores, :temp_board
   attr_reader :board, :score, :player1, :player2, :player

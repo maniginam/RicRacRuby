@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require_relative 'ai_player'
 require_relative 'human_player'
 
-# Game Setup
 class Setup
   attr_accessor :gui, :tokens, :num_of_humans, :human, :player1, :player2, :board
 

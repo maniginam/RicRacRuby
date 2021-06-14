@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require 'minitest/autorun'
 require_relative '../lib/board'
 
-# Test program minimax
 class BoardTest < Minitest::Test
   def test_game_over_empty_board
     board = Board.new([0, 1, 2, 3, 4, 5, 6, 7, 8])

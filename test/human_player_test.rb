@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-
 require 'minitest/autorun'
 require_relative '../lib/human_player'
 require_relative '../lib/board'
 require_relative 'spec_helper'
 
-# Test Human Player
 class HumanPlayerTest < Minitest::Test
   attr_accessor :board, :player1, :player2, :gui
 

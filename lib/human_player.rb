@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 require_relative 'minimax'
-# Human Player
+
 class HumanPlayer < Player
   attr_accessor :token, :score, :box
 

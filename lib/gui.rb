@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Game Gui
 class Gui
   attr_accessor :num_of_humans, :human, :board
 

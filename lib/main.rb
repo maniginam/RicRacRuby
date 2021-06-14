@@ -1,8 +1,3 @@
-#!/usr/local/opt/ruby/bin ruby
-# frozen_string_literal: true
-
-# # frozen_string_literal: true
-
 require_relative 'board'
 require_relative 'game_master'
 require_relative 'gui'

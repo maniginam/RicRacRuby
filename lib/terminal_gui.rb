@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require_relative 'gui'
 
-# Terminal
 class Terminal < Gui
   attr_accessor :num_of_humans, :human
 
@@ -20,8 +17,10 @@ class Terminal < Gui
       "Ok.  I will play for yet another cat's game against myself..."
     elsif @num_of_humans == 2
       'May the best player win!'
-    else
+    elsif @num_of_humans == 1
       "May the odds be eva' in your favor!"
+    else 
+      "Not an option."
     end
   end
 

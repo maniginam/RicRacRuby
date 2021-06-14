@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Player
 class Player
   attr_accessor :token, :score, :box
 

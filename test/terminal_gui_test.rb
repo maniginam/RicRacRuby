@@ -1,12 +1,9 @@
-# frozen_string_literal: true
-
 require 'minitest/autorun'
 require_relative '../lib/terminal_gui'
 require_relative '../lib/gui'
 require_relative '../lib/human_player'
 require_relative '../lib/ai_player'
 
-# Test Terminal Gui
 class TerminalTest < Minitest::Test
   attr_accessor :terminal
 
@@ -148,7 +145,7 @@ class TerminalTest < Minitest::Test
   end
 
   def test_non_valid_box_selection
-    board = Board.new([0, 1, 2, 3, 'X', 5, 6, 7, 8])
+    Board.new([0, 1, 2, 3, 'X', 5, 6, 7, 8])
     assert_equal false, terminal.valid_box?('hello world')
     assert_equal false, terminal.valid_box?('h')
     assert_equal true, terminal.valid_box?('1')

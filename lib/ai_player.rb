@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'minimax'
 # Ai Player
 class AiPlayer < Player

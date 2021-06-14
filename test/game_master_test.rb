@@ -1,11 +1,8 @@
-# frozen_string_literal: true
-
 require 'minitest/autorun'
 require_relative 'spec_helper'
 require_relative '../lib/game_master'
 require_relative '../lib/gui'
 
-# Test game_master
 class GameMasterTest < Minitest::Test
   attr_accessor :game_master, :board, :player1, :player2, :gui
 

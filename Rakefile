@@ -1,17 +1,5 @@
-#!/usr/local/opt/ruby/bin ruby
-# frozen_string_literal: true
-
-# -*- ruby -*-
-#
-require 'rake/clean'
-require 'rake/testtask'
 
 task default: :run
-
-# RuboCop::RakeTask.new(:lint) do |task|
-#   task.patterns = ['lib/**/*.rb', 'test/**/*.rb']
-#   task.fail_on_error = false
-# end
 
 task :run do
   ruby 'lib/main.rb'

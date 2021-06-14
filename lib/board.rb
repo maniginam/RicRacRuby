@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# board
 class Board
   attr_accessor :board, :wins
 

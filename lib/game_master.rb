@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require_relative 'board'
 require_relative 'player'
 
-# GameMaster
 class GameMaster
   attr_accessor :gui, :board, :player1, :player2, :player, :winner, :play_again
 
